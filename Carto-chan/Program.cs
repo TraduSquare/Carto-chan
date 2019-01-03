@@ -30,7 +30,7 @@ namespace Carto_chan
             {
                 Console.WriteLine("USAGE: Carto-chan.exe <-txt/-po/credits> \"file\"");
                 Console.WriteLine("Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt");
-                Console.WriteLine("Convert Po to TXT: Carto-chan.exe -po lb_script_001.po ");
+                Console.WriteLine("Convert Po to TXT: Carto-chan.exe -po lb_script_001.po");
                 Console.WriteLine("Show the credits: Carto-chan.exe credits");
                 Environment.Exit(-1);
             }
@@ -50,7 +50,7 @@ namespace Carto_chan
                     break;
                 case "credits":
                     Console.WriteLine("Thanks to Pleonex for Yarhl libraries.");
-                    Console.WriteLine("This logo has been originally created in its entirety by JohnSue and thus all rights belong to him.");
+                    Console.WriteLine("This logo has been originally created in its entirety by JohnSu and thus all rights belong to him.");
                     Console.WriteLine("https://www.deviantart.com/johnsu/art/Global-Cartographer-Atlyss-560955860");
                     break;
             }

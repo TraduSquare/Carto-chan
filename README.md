@@ -18,5 +18,5 @@ If you need to replace some strings (like [LINE] to \n), create a "Dictionary.tx
 
 # Credits
 * Thanks to Pleonex for Yarhl libraries.
-* Carto-chan's logo has been originally created in its entirety by JohnSue and thus all rights belong to him
+* Carto-chan's logo has been originally created in its entirety by JohnSu and thus all rights belong to him
 * https://www.deviantart.com/johnsu/art/Global-Cartographer-Atlyss-560955860
