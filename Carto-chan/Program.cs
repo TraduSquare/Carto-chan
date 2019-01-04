@@ -25,11 +25,12 @@ namespace Carto_chan
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Carto-chan 1.0 - A simple converter for Cartographer TXT format to Po by Darkmet98.");
-            if (args.Length != 1 && args.Length != 2)
+            Console.WriteLine("Carto-chan 1.1 - A simple converter for Cartographer TXT format to Po by Darkmet98.");
+            if (args.Length != 1 && args.Length != 2 && args.Length != 3)
             {
-                Console.WriteLine("USAGE: Carto-chan.exe <-txt/-po/credits> \"file\"");
-                Console.WriteLine("Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt");
+                Console.WriteLine("USAGE: Carto-chan.exe <-txt/-po/credits> \"file\" \"Language\"");
+                Console.WriteLine("If you don't specify any language, the default is \"es\".");
+                Console.WriteLine("Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt en");
                 Console.WriteLine("Convert Po to TXT: Carto-chan.exe -po lb_script_001.po");
                 Console.WriteLine("Show the credits: Carto-chan.exe credits");
                 Environment.Exit(-1);
@@ -38,7 +39,9 @@ namespace Carto_chan
             {
                 case "-txt":
                     if (args.Length == 2 && File.Exists(args[1]))
-                        TXT.Export(args[1]);
+                        TXT.Export(args[1], "es");
+                    else if (args.Length == 3 && File.Exists(args[1]))
+                        TXT.Export(args[1], args[2]);
                     else
                         Console.WriteLine("Error, the file doesn't exist");
                     break;

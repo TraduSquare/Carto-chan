@@ -33,7 +33,7 @@ namespace Carto_chan
         private static List<string> Pointers = new List<string>();
         private static List<string> Text = new List<string>();
 
-        public static void Export(string file)
+        public static void Export(string file, string language)
         {
             Console.WriteLine("Exporting " + file + "...");
             string[] textfile = System.IO.File.ReadAllLines(file);
@@ -72,16 +72,16 @@ namespace Carto_chan
                     }
                 }
             }
-            ToPo(file);
+            ToPo(file, language);
 
 
         }
 
-        private static void ToPo (string file)
+        private static void ToPo (string file, string language)
         {
             Po po = new Po
             {
-                Header = new PoHeader(Gamename, "fiction@email.com", "es")
+                Header = new PoHeader(Gamename, "fiction@email.com", language)
                 {
                     LanguageTeam = "Fiction",
                 }
