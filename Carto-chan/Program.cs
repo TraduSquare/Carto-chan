@@ -29,7 +29,7 @@ namespace Carto_chan
             if (args.Length != 1 && args.Length != 2 && args.Length != 3)
             {
                 Console.WriteLine("USAGE: Carto-chan.exe <-txt/-po/credits> \"file\" \"Language\"");
-                Console.WriteLine("If you don't specify any language, the default is \"es\".");
+                Console.WriteLine("If you don't specify any language, the default will be \"es\".");
                 Console.WriteLine("Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt en");
                 Console.WriteLine("Convert Po to TXT: Carto-chan.exe -po lb_script_001.po");
                 Console.WriteLine("Show the credits: Carto-chan.exe credits");

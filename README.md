@@ -4,7 +4,7 @@ A simple converter for Cartographer TXT format to Po.
 
 # Usage
 Carto-chan.exe <-txt/-po/credits> "file" "language" 
-(If you don't specify any language, the default is "es")
+(If you don't specify any language, the default will be "es")
 
 * Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt en
 * Convert Po to TXT: Carto-chan.exe -po lb_script_001.po
