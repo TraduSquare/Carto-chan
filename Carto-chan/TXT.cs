@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2018 Darkmet98
+﻿// Copyright (C) 2019 Pedro Garau Martínez
 //
 // This file is part of Carto-chan.
 //
@@ -26,7 +26,6 @@ namespace Carto_chan
 
     class TXT
     {
-        private static string Gamename = "";
         private static bool Import = false;
         private static string Block = "";
         private static List<string> Pointers = new List<string>();
@@ -36,7 +35,7 @@ namespace Carto_chan
         {
             Console.WriteLine("Exporting " + file + "...");
             string[] textfile = System.IO.File.ReadAllLines(file);
-            Gamename = textfile[0].Substring(14);
+            //Gamename = textfile[0].Substring(14);
             foreach (string line in textfile)
             {
                 if (line != "")
@@ -74,7 +73,7 @@ namespace Carto_chan
         {
             Po po = new Po
             {
-                Header = new PoHeader(Gamename, "fiction@email.com", language)
+                Header = new PoHeader("Game", "fiction@email.com", language)
                 {
                     LanguageTeam = "Fiction",
                 }

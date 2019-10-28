@@ -1,14 +1,14 @@
 ![Carto-chan](https://raw.githubusercontent.com/TraduSquare/Carto-chan/master/logo.png)
 # Carto-chan
-A simple converter for Cartographer TXT format to Po.
+A simple converter for Cartographer (And Atlas) TXT format to Po.
 
 # Usage
-Carto-chan.exe <-txt/-po/credits> "file" "language" 
+Carto-chan <-txt/-po/credits> "file" "language" 
 (If you don't specify any language, the default will be "es")
 
-* Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt en
-* Convert Po to TXT: Carto-chan.exe -po lb_script_001.po
-* Show the credits: Carto-chan.exe credits
+* Convert TXT to Po: Carto-chan -txt lb_script_001.txt en
+* Convert Po to TXT: Carto-chan -po lb_script_001.po
+* Show the credits: Carto-chan credits
 
 # Changelog
 ## 1.0
@@ -17,6 +17,10 @@ Carto-chan.exe <-txt/-po/credits> "file" "language"
 ## 1.1
 * Updated Net Framework to 4.7.2
 * Added a language selector when export txt to po
+
+## 1.2
+* Updated to NET Core 3
+* Rewrited compatibility with the txt files and now support Atlas scripts
 
 # Dictionary
 If you need to replace some strings (like [LINE] to \n), create a "Dictionary.txt" file on the program folder and put "Value original"="Value replaced" like this ([LINE]=\n) and Carto-chan will replace the strings.

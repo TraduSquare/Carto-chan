@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2018 Darkmet98
+﻿// Copyright (C) 2019 Pedro Garau Martínez
 //
 // This file is part of Carto-chan.
 //
@@ -34,27 +34,29 @@ namespace Carto_chan
             Po po = new BinaryFormat(new DataStream(file, FileOpenMode.Read)).ConvertTo<Po>(); //Flan code
             file = file.Remove(file.Length - 3);
             //Write file
-            Yarhl.IO.TextWriter writer = new Yarhl.IO.TextWriter(new DataStream(file + "x.txt", FileOpenMode.Write));
+            Yarhl.IO.TextWriter writer = new Yarhl.IO.TextWriter(new DataStream(file + "_new.txt", FileOpenMode.Write));
             writer.NewLine = "\r\n";
-            writer.WriteLine("//GAME NAME:\t\t" + po.Header.ProjectIdVersion);
+            //writer.WriteLine("//GAME NAME:\t\t" + po.Header.ProjectIdVersion);
             foreach (var entry in po.Entries)
             {
                 string potext = string.IsNullOrEmpty(entry.Translated) ?
                     entry.Original : entry.Translated;
 
-                if (potext.IndexOf("[END]") == -1)
+                /*if (potext.IndexOf("[END]") == -1)
                 {
                     Console.WriteLine("ERROR: The string\n\n" + potext + "\n\ndoesn't contain a [END] and the game will be crash, fix it and import the po to txt again");
                     Environment.Exit(-1);
-                }
+                }*/
 
                 potext = potext.Replace("\n", "\\n");
                 if (File.Exists("Dictionary.txt"))
-                potext = Common.Replace(potext, Isimport);
+                    potext = Common.Replace(potext, Isimport);
+                
                 entry.Reference = entry.Reference.Substring(1);
                 entry.Reference = entry.Reference.Replace("|", "\r\n");
-                writer.WriteLine(entry.Reference);
-                writer.WriteLine(potext + "\r\n\r\n");
+                writer.WriteLine(entry.Reference + "\r\n" + potext + "\r\n\r\n");
+                //Fix on linux
+                writer.WriteLine();
             }
         }
     }

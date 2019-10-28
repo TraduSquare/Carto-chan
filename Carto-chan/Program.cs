@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2018 Darkmet98
+﻿// Copyright (C) 2019 Pedro Garau Martínez
 //
 // This file is part of Carto-chan.
 //
@@ -25,14 +25,15 @@ namespace Carto_chan
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Carto-chan 1.2 - A simple converter for Cartographer TXT format to Po by Darkmet98.");
+            Console.WriteLine("Carto-chan 1.2 - A simple converter for Cartographer (And Atlas) TXT format to Po by Darkmet98.");
+            Console.WriteLine("This program is under GPL V3 license.");
             if (args.Length != 1 && args.Length != 2 && args.Length != 3)
             {
-                Console.WriteLine("USAGE: Carto-chan.exe <-txt/-po/credits> \"file\" \"Language\"");
+                Console.WriteLine("USAGE: Carto-chan <-txt/-po/credits> \"file\" \"Language\"");
                 Console.WriteLine("If you don't specify the translation's language, the default will be \"es\".");
-                Console.WriteLine("Convert TXT to Po: Carto-chan.exe -txt lb_script_001.txt en");
-                Console.WriteLine("Convert Po to TXT: Carto-chan.exe -po lb_script_001.po");
-                Console.WriteLine("Show the credits: Carto-chan.exe credits");
+                Console.WriteLine("Convert TXT to Po: Carto-chan -txt lb_script_001.txt en");
+                Console.WriteLine("Convert Po to TXT: Carto-chan -po lb_script_001.po");
+                Console.WriteLine("Show the credits: Carto-chan credits");
                 Environment.Exit(-1);
             }
             switch (args[0])
@@ -52,7 +53,6 @@ namespace Carto_chan
                         Console.WriteLine("Error, the file doesn't exist");
                     break;
                 case "credits":
-                    Console.WriteLine("This program is under GPL V3 license.");
                     Console.WriteLine("Thanks to Pleonex for Yarhl libraries.");
                     Console.WriteLine("This logo has been originally created in its entirety by JohnSu and thus all rights belong to him.");
                     Console.WriteLine("https://www.deviantart.com/johnsu/art/Global-Cartographer-Atlyss-560955860");
