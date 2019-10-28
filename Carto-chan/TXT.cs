@@ -27,7 +27,6 @@ namespace Carto_chan
     class TXT
     {
         private static string Gamename = "";
-        private static bool Istext = false;
         private static bool Import = false;
         private static string Block = "";
         private static List<string> Pointers = new List<string>();
@@ -42,33 +41,27 @@ namespace Carto_chan
             {
                 if (line != "")
                 {
-                    if (!Istext)
+                    string value = line.Substring(0, 1);
+                    switch (value)
                     {
-                        string value = line.Substring(2, 5);
-                        switch (value)
-                        {
-                            case "BLOCK":
-                                Block = line.Substring(2);
-                                break;
-                            case "POINT":
-                                if (Block.Length != 0)
-                                {
-                                    Pointers.Add(Block + "|" + line.Substring(2));
-                                    Block = "";
-                                }
-                                else
-                                    Pointers.Add(line.Substring(2));
-                                Istext = true;
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        if (File.Exists("Dictionary.txt"))
-                            Text.Add(Common.Replace(line, Import));
-                        else
-                            Text.Add(line);
-                        Istext = false;
+                        case "/":
+                            Block = Block + "|" + line;
+                            break;
+                        case "#":
+                            Block = Block + "|" + line;
+                            break;
+                        /*case "<":
+                            Block = Block + "|" + line;
+                            break;*/
+                        default:
+                            Pointers.Add(Block);
+                            Block = "";
+
+                            if (File.Exists("Dictionary.txt"))
+                                Text.Add(Common.Replace(line, Import));
+                            else
+                                Text.Add(line);
+                            break;
                     }
                 }
             }
