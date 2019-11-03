@@ -25,7 +25,7 @@ namespace Carto_chan
 {
     class PO
     {
-        private static bool Isimport = true;
+        //private static bool Isimport = true;
 
         public static void Import(string file)
         {
@@ -42,19 +42,13 @@ namespace Carto_chan
                 string potext = string.IsNullOrEmpty(entry.Translated) ?
                     entry.Original : entry.Translated;
 
-                /*if (potext.IndexOf("[END]") == -1)
-                {
-                    Console.WriteLine("ERROR: The string\n\n" + potext + "\n\ndoesn't contain a [END] and the game will be crash, fix it and import the po to txt again");
-                    Environment.Exit(-1);
-                }*/
+                potext = potext.Replace("<", "\r\n<").Replace("\n", "<LINE>\r\n").Replace("<LINE>\r\n<", "<");
 
-                potext = potext.Replace("\n", "\\n");
-                if (File.Exists("Dictionary.txt"))
-                    potext = Common.Replace(potext, Isimport);
-                
+                string result = entry.ExtractedComments!="Selection"?entry.ExtractedComments+"\r\n"+potext : potext;
+
                 entry.Reference = entry.Reference.Substring(1);
                 entry.Reference = entry.Reference.Replace("|", "\r\n");
-                writer.WriteLine(entry.Reference + "\r\n" + potext + "\r\n\r\n");
+                writer.WriteLine(entry.Reference + "\r\n" + result);
                 //Fix on linux
                 writer.WriteLine();
             }

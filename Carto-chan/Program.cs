@@ -25,7 +25,7 @@ namespace Carto_chan
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Carto-chan 1.2 - A simple converter for Cartographer (And Atlas) TXT format to Po by Darkmet98.");
+            Console.WriteLine("Carto-chan Corpse Party Edition - A simple converter for Cartographer (And Atlas) TXT format to Po by Darkmet98.");
             Console.WriteLine("This program is under GPL V3 license.");
             if (args.Length != 1 && args.Length != 2 && args.Length != 3)
             {

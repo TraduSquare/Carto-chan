@@ -28,14 +28,20 @@ namespace Carto_chan
     {
         private static bool Import = false;
         private static string Block = "";
+        private static string Name = "";
         private static List<string> Pointers = new List<string>();
+        private static List<string> Names = new List<string>();
         private static List<string> Text = new List<string>();
 
         public static void Export(string file, string language)
         {
             Console.WriteLine("Exporting " + file + "...");
-            string[] textfile = System.IO.File.ReadAllLines(file);
-            //Gamename = textfile[0].Substring(14);
+            string fixfile = File.ReadAllText(file);
+            fixfile = fixfile.Replace("\r\n<", "<").Replace("<LINE>\r\n","<LINE>");
+            File.WriteAllText("hola.txt", fixfile);
+            string[] textfile = fixfile.Split("\r\n");
+
+
             foreach (string line in textfile)
             {
                 if (line != "")
@@ -49,17 +55,19 @@ namespace Carto_chan
                         case "#":
                             Block = Block + "|" + line;
                             break;
-                        /*case "<":
-                            Block = Block + "|" + line;
-                            break;*/
+                        case "【":
+                            Name = line;
+                            break;
                         default:
                             Pointers.Add(Block);
                             Block = "";
-
-                            if (File.Exists("Dictionary.txt"))
-                                Text.Add(Common.Replace(line, Import));
-                            else
-                                Text.Add(line);
+                            
+                            Names.Add(!string.IsNullOrEmpty(Name) ? Name : "Selection");
+                            Name = "";
+                            
+                            Text.Add(File.Exists("Dictionary.txt")
+                                ? Common.Replace(line, Import)
+                                : line.Replace("<LINE>", "\n"));
                             break;
                     }
                 }
@@ -73,7 +81,7 @@ namespace Carto_chan
         {
             Po po = new Po
             {
-                Header = new PoHeader("Game", "fiction@email.com", language)
+                Header = new PoHeader("Corpse Party Book of Shadows", "fiction@email.com", language)
                 {
                     LanguageTeam = "Fiction",
                 }
@@ -86,6 +94,7 @@ namespace Carto_chan
                 entry.Context = i.ToString();
                 entry.Original = Text[i];
                 entry.Reference = Pointers[i];
+                entry.ExtractedComments = Names[i];
                 po.Add(entry);
             }
             file = file.Remove(file.Length - 3);
