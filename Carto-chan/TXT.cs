@@ -38,8 +38,11 @@ namespace Carto_chan
             Console.WriteLine("Exporting " + file + "...");
             string fixfile = File.ReadAllText(file);
             fixfile = fixfile.Replace("\r\n<", "<").Replace("<LINE>\r\n","<LINE>");
-            File.WriteAllText("hola.txt", fixfile);
-            string[] textfile = fixfile.Split("\r\n");
+            //File.WriteAllText("hola.txt", fixfile);
+            string[] textfile = fixfile.Split(
+                new[] { "\r\n", "\r", "\n" },
+                StringSplitOptions.None
+            );
 
 
             foreach (string line in textfile)

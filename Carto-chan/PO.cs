@@ -42,9 +42,9 @@ namespace Carto_chan
                 string potext = string.IsNullOrEmpty(entry.Translated) ?
                     entry.Original : entry.Translated;
 
-                potext = potext.Replace("<", "\r\n<").Replace("\n", "<LINE>\r\n").Replace("<LINE>\r\n<", "<");
+                potext = potext.Replace("\n", "<LINE>");
 
-                string result = entry.ExtractedComments!="Selection"?entry.ExtractedComments+"\r\n"+potext : potext;
+                string result = entry.ExtractedComments!="Selection"?entry.ExtractedComments+potext : potext;
 
                 entry.Reference = entry.Reference.Substring(1);
                 entry.Reference = entry.Reference.Replace("|", "\r\n");
