@@ -8,6 +8,7 @@
     <Copyright>GPL V3</Copyright>
     <RootNamespace>Carto_chan</RootNamespace>
     <Company>TraduSquare</Company>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
     <ItemGroup>
@@ -17,6 +18,12 @@
   <ItemGroup>
     <PackageReference Include="Yarhl" Version="3.1.0" />
     <PackageReference Include="Yarhl.Media" Version="3.1.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Settings.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
