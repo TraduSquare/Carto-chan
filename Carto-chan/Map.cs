@@ -77,7 +77,7 @@ namespace Carto_chan
                 EncodingText = Encoding.GetEncoding(Convert.ToInt32(dictionary[12].Substring(9)));
                 Flags = dictionary[15].Substring(6);
 
-                for (int i = 20; i < dictionary.Length; i++)
+                for (int i = 19; i < dictionary.Length; i++)
                 {
                     var line = dictionary[i];
                     

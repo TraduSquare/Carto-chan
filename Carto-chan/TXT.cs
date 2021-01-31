@@ -9,23 +9,30 @@ namespace Carto_chan
 
     class TXT
     {
-        private static List<string> pointers = new List<string>();
-        private static List<string> texts = new List<string>();
+        private static List<string> pointers = new();
+        private static List<string> texts = new();
 
         public static void Export(string file)
         {
             Console.WriteLine("Exporting " + file + "...");
             Map.Generatedictionary();
-            var textReader = new TextReader(DataStreamFactory.FromFile(file, FileOpenMode.Read), Map.EncodingText);
+            var textReader = new TextReader(DataStreamFactory.FromFile(file, FileOpenMode.Read), Map.EncodingText)
+            {
+                NewLine = "\r\n",
+                AutoNewLine = true
+            };
 
             do
             {
                 var junk = string.Empty;
+                if (textReader.Stream.Length == textReader.Stream.Position + 2)
+                    break;
+                
                 do
                 {
                     junk += textReader.ReadToToken(Map.Token);
                     junk += Map.Token + textReader.ReadToToken(")") + ")";
-                    textReader.Read();
+                    textReader.ReadLine();
                     junk += "\n";
                     var next = textReader.Peek(Map.Token.Length);
                     if (new string(next) != Map.Token)
